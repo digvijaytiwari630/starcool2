@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SplashScreen from './components/SplashScreen';
 import Navbar from './components/Navbar';
 import HeaderBadgeBar from './components/HeaderBadgeBar';
@@ -22,6 +22,9 @@ import FloatingButtons from './components/FloatingButtons';
 import QuickBookingModal from './components/QuickBookingModal';
 
 export default function App() {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('acseva_theme') || 'dark';
+  });
   const [splashFinished, setSplashFinished] = useState(false);
   const [selectedAppliance, setSelectedAppliance] = useState('AC');
   const [selectedService, setSelectedService] = useState('AC Repair & Service');
@@ -32,6 +35,24 @@ export default function App() {
   const [quickModalOpen, setQuickModalOpen] = useState(false);
   const [modalServiceName, setModalServiceName] = useState('');
   const [modalAppliance, setModalAppliance] = useState('');
+
+  useEffect(() => {
+    if (theme === 'light') {
+      document.documentElement.classList.add('light-mode');
+      document.documentElement.classList.remove('dark-mode');
+    } else {
+      document.documentElement.classList.add('dark-mode');
+      document.documentElement.classList.remove('light-mode');
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => {
+      const nextTheme = prev === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('acseva_theme', nextTheme);
+      return nextTheme;
+    });
+  };
 
   const handleSelectService = (appliance, serviceName) => {
     setModalAppliance(appliance);
@@ -60,12 +81,12 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#020611] text-slate-100 min-h-screen font-sans selection:bg-gold selection:text-midnight-dark">
+    <div className={`${theme === 'light' ? 'light-mode bg-[#F8FAFC] text-slate-900' : 'dark-mode bg-[#020611] text-slate-100'} min-h-screen font-sans selection:bg-gold selection:text-midnight-dark transition-colors duration-300`}>
       {!splashFinished && (
         <SplashScreen onFinish={() => setSplashFinished(true)} />
       )}
 
-      <Navbar />
+      <Navbar theme={theme} onToggleTheme={toggleTheme} />
       
       {/* 3D Metallic Quick Badges bar below sticky header */}
       <HeaderBadgeBar onSelectBadge={handleSelectService} />

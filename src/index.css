@@ -101,3 +101,180 @@
   background-color: #0B1A38;
   color: #ffffff;
 }
+
+/* ============================================================
+   MOBILE HAMBURGER DRAWER: PURE WHITE BACKGROUND + BLACK TEXT
+   ============================================================ */
+#mobile-nav-drawer {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+#mobile-nav-drawer nav a {
+  color: #0F172A !important;
+}
+
+#mobile-nav-drawer nav a:hover {
+  color: #D97706 !important;
+}
+
+#mobile-nav-drawer span,
+#mobile-nav-drawer p,
+#mobile-nav-drawer h3 {
+  color: #0F172A !important;
+}
+
+/* ============================================================
+   LIGHT MODE / WHITE MODE COMPREHENSIVE THEME STYLES
+   ============================================================ */
+.light-mode {
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+}
+
+.light-mode body {
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+}
+
+/* Base backgrounds & panels in light mode */
+.light-mode .bg-midnight,
+.light-mode .bg-midnight-dark,
+.light-mode .bg-midnight-card,
+.light-mode .bg-\[\#020611\],
+.light-mode .bg-\[\#040E1E\] {
+  background-color: #FFFFFF !important;
+}
+
+.light-mode .bg-midnight\/70,
+.light-mode .bg-midnight-dark\/80,
+.light-mode .bg-midnight-dark\/95,
+.light-mode .bg-midnight-card\/90,
+.light-mode .bg-midnight-card\/50 {
+  background-color: #F1F5F9 !important;
+}
+
+.light-mode .bg-midnight-light\/50 {
+  background-color: #FFFFFF !important;
+}
+
+/* Glass panel and Nav in Light mode */
+.light-mode .glass-panel {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(217, 119, 6, 0.25) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06) !important;
+  color: #0F172A !important;
+}
+
+.light-mode .glass-nav {
+  background: rgba(255, 255, 255, 0.96) !important;
+  border-bottom: 1px solid rgba(217, 119, 6, 0.3) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-mode .glass-nav nav a {
+  color: #1E293B !important;
+}
+
+.light-mode .glass-nav nav a:hover {
+  color: #D97706 !important;
+}
+
+/* Typography in Light mode */
+.light-mode h1,
+.light-mode h2,
+.light-mode h3,
+.light-mode h4,
+.light-mode .text-white {
+  color: #0F172A !important;
+}
+
+.light-mode .text-slate-100,
+.light-mode .text-slate-200 {
+  color: #1E293B !important;
+}
+
+.light-mode .text-slate-300 {
+  color: #334155 !important;
+}
+
+.light-mode .text-slate-400 {
+  color: #64748B !important;
+}
+
+.light-mode .text-slate-500 {
+  color: #64748B !important;
+}
+
+/* Gold gradients and highlights in light mode */
+.light-mode .gold-gradient-text {
+  background: linear-gradient(135deg, #92400E 0%, #D97706 45%, #B45309 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.light-mode .text-gold {
+  color: #B45309 !important;
+}
+
+.light-mode .gold-border-glow {
+  border: 1px solid rgba(217, 119, 6, 0.28) !important;
+  box-shadow: 0 4px 15px rgba(217, 119, 6, 0.08) !important;
+}
+
+.light-mode .gold-border-glow:hover {
+  border-color: #D97706 !important;
+  box-shadow: 0 10px 25px rgba(217, 119, 6, 0.18) !important;
+}
+
+/* Form inputs in Light mode */
+.light-mode .custom-input {
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  color: #0F172A !important;
+}
+
+.light-mode .custom-input:focus {
+  border-color: #D97706 !important;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15) !important;
+}
+
+.light-mode .custom-input option {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+/* Borders in Light mode */
+.light-mode .border-slate-800,
+.light-mode .border-slate-800\/80,
+.light-mode .border-slate-700 {
+  border-color: #E2E8F0 !important;
+}
+
+.light-mode .border-gold\/25,
+.light-mode .border-gold\/15,
+.light-mode .border-gold\/30,
+.light-mode .border-gold\/35,
+.light-mode .border-gold\/40,
+.light-mode .border-gold\/50,
+.light-mode .border-gold\/60 {
+  border-color: rgba(217, 119, 6, 0.3) !important;
+}
+
+/* Footer in light mode */
+.light-mode footer {
+  background-color: #F1F5F9 !important;
+  border-top-color: rgba(217, 119, 6, 0.3) !important;
+}
+
+.light-mode footer .text-slate-400 {
+  color: #475569 !important;
+}
+
+.light-mode footer .text-slate-300 {
+  color: #334155 !important;
+}
+
+.light-mode ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
