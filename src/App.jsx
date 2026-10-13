@@ -23,9 +23,21 @@ import QuickBookingModal from './components/QuickBookingModal';
 
 export default function App() {
   const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlTheme = urlParams.get('theme');
+      if (urlTheme === 'light' || urlTheme === 'white') return 'light';
+      if (urlTheme === 'dark') return 'dark';
+    }
     return localStorage.getItem('acseva_theme') || 'dark';
   });
-  const [splashFinished, setSplashFinished] = useState(false);
+  const [splashFinished, setSplashFinished] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('nosplash') === 'true' || urlParams.get('menu') === 'open';
+    }
+    return false;
+  });
   const [selectedAppliance, setSelectedAppliance] = useState('AC');
   const [selectedService, setSelectedService] = useState('AC Repair & Service');
   const [selectedArea, setSelectedArea] = useState('');

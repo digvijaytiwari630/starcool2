@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 
 export default function Navbar({ theme = 'dark', onToggleTheme }) {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('menu') === 'open';
+    }
+    return false;
+  });
 
   return (
-    <header className="sticky top-0 z-50 glass-nav transition-all duration-300">
+    <>
+      <header className="sticky top-0 z-50 glass-nav transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Brand Logo */}
@@ -83,22 +90,23 @@ export default function Navbar({ theme = 'dark', onToggleTheme }) {
           </button>
         </div>
       </div>
+    </header>
 
-      {/* Dark Overlay Backdrop when mobile menu is open */}
-      {mobileOpen && (
-        <div
-          onClick={() => setMobileOpen(false)}
-          className="fixed inset-0 z-[60] bg-black/75 backdrop-blur-sm lg:hidden transition-opacity"
-        ></div>
-      )}
-
-      {/* Mobile Solid Navigation Drawer (Pure White Background + Black Text) */}
+    {/* Dark Overlay Backdrop when mobile menu is open */}
+    {mobileOpen && (
       <div
-        id="mobile-nav-drawer"
-        className={`fixed inset-y-0 right-0 z-[70] w-80 !bg-white border-l border-slate-200 p-6 flex flex-col justify-between shadow-[0_0_50px_rgba(0,0,0,0.35)] transition-transform duration-300 lg:hidden overflow-y-auto ${
-          mobileOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
+        onClick={() => setMobileOpen(false)}
+        className="fixed inset-0 z-[60] bg-black/75 backdrop-blur-sm lg:hidden transition-opacity"
+      ></div>
+    )}
+
+    {/* Mobile Solid Navigation Drawer (Pure White Background + Black Text) */}
+    <div
+      id="mobile-nav-drawer"
+      className={`fixed inset-y-0 right-0 z-[70] w-80 max-w-[85vw] h-screen !bg-white border-l border-slate-200 p-6 flex flex-col justify-between shadow-[0_0_50px_rgba(0,0,0,0.35)] transition-transform duration-300 lg:hidden overflow-y-auto ${
+        mobileOpen ? 'translate-x-0' : 'translate-x-full'
+      }`}
+    >
         <div>
           {/* Drawer Header */}
           <div className="flex items-center justify-between mb-5 pb-4 border-b border-slate-200">
@@ -193,6 +201,6 @@ export default function Navbar({ theme = 'dark', onToggleTheme }) {
           </a>
         </div>
       </div>
-    </header>
+    </>
   );
 }
