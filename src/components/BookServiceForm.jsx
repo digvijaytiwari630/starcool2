@@ -81,7 +81,8 @@ export default function BookServiceForm({
       alert('Please enter your full name.');
       return;
     }
-    if (!phone.trim() || phone.length < 10) {
+    const cleanPhone = phone.replace(/[^0-9]/g, '');
+    if (cleanPhone.length !== 10) {
       alert('Please enter a valid 10-digit mobile number.');
       return;
     }
@@ -97,20 +98,20 @@ export default function BookServiceForm({
     const messageText = 
 `*New Service Booking - AC Seva* 🛠️
 
-👤 *Customer Name:* ${name}
-📞 *Mobile Number:* ${phone}
+👤 *Customer Name:* ${name.trim()}
+📞 *Mobile Number:* ${cleanPhone}
 🔌 *Appliance:* ${appliance}
 🛠️ *Required Service:* ${service}
-📍 *Area & PIN Code:* ${pincodeArea}
-🏠 *Service Address:* ${address}
+📍 *Area & PIN Code:* ${pincodeArea.trim()}
+🏠 *Service Address:* ${address.trim()}
 📅 *Preferred Date:* ${date || 'As soon as possible'}
 ⏰ *Preferred Time Slot:* ${time}
-📝 *Problem Description:* ${problem || 'General Service & Diagnostic'}`;
+📝 *Problem Description:* ${problem.trim() || 'General Service & Diagnostic'}`;
 
     const whatsappUrl = `https://wa.me/918471084775?text=${encodeURIComponent(messageText)}`;
     
-    // Open directly to owner's WhatsApp
-    window.open(whatsappUrl, '_blank');
+    // Open directly to owner's WhatsApp with noopener and noreferrer for tab security
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     setShowModal(true);
   };
 
