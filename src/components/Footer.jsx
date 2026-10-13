@@ -34,6 +34,7 @@ export default function Footer() {
               <li><a href="#washing-machine-service" className="hover:text-gold transition-colors">Washing Machine</a></li>
               <li><a href="#refrigerator-service" className="hover:text-gold transition-colors">Refrigerator</a></li>
               <li><a href="#ac-brands" className="hover:text-gold transition-colors">Brands</a></li>
+              <li><a href="#service-areas" className="hover:text-gold transition-colors">Service Areas & PIN Codes</a></li>
               <li><a href="#contact" className="hover:text-gold transition-colors">Contact</a></li>
             </ul>
           </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { MUMBAI_PINCODE_LIST } from '../seoData';
 
 const SERVICES_MAP = {
   AC: [
@@ -32,11 +33,20 @@ const SERVICES_MAP = {
   ]
 };
 
-export default function BookServiceForm({ selectedAppliance, selectedService, onApplianceChange }) {
+export default function BookServiceForm({
+  selectedAppliance,
+  selectedService,
+  selectedPincode,
+  selectedArea,
+  onApplianceChange
+}) {
   const [appliance, setAppliance] = useState(selectedAppliance || 'AC');
   const [service, setService] = useState(selectedService || 'AC Repair & Service');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [pincodeArea, setPincodeArea] = useState(
+    selectedArea && selectedPincode ? `${selectedArea} (${selectedPincode})` : ''
+  );
   const [date, setDate] = useState('');
   const [time, setTime] = useState('Morning (09:00 AM - 12:00 PM)');
   const [address, setAddress] = useState('');
@@ -47,6 +57,14 @@ export default function BookServiceForm({ selectedAppliance, selectedService, on
     if (selectedAppliance) setAppliance(selectedAppliance);
     if (selectedService) setService(selectedService);
   }, [selectedAppliance, selectedService]);
+
+  useEffect(() => {
+    if (selectedArea && selectedPincode) {
+      setPincodeArea(`${selectedArea} (${selectedPincode})`);
+    } else if (selectedPincode) {
+      setPincodeArea(selectedPincode);
+    }
+  }, [selectedPincode, selectedArea]);
 
   const handleApplianceSelect = (val) => {
     setAppliance(val);
@@ -67,6 +85,10 @@ export default function BookServiceForm({ selectedAppliance, selectedService, on
       alert('Please enter a valid 10-digit mobile number.');
       return;
     }
+    if (!pincodeArea.trim()) {
+      alert('Please select or enter your Area & PIN code.');
+      return;
+    }
     if (!address.trim()) {
       alert('Please enter your service address.');
       return;
@@ -79,9 +101,10 @@ export default function BookServiceForm({ selectedAppliance, selectedService, on
 📞 *Mobile Number:* ${phone}
 🔌 *Appliance:* ${appliance}
 🛠️ *Required Service:* ${service}
+📍 *Area & PIN Code:* ${pincodeArea}
+🏠 *Service Address:* ${address}
 📅 *Preferred Date:* ${date || 'As soon as possible'}
-⏰ *Preferred Time:* ${time}
-📍 *Service Address:* ${address}
+⏰ *Preferred Time Slot:* ${time}
 📝 *Problem Description:* ${problem || 'General Service & Diagnostic'}`;
 
     const whatsappUrl = `https://wa.me/918471084775?text=${encodeURIComponent(messageText)}`;
@@ -100,6 +123,7 @@ export default function BookServiceForm({ selectedAppliance, selectedService, on
     setShowModal(false);
     setName('');
     setPhone('');
+    setPincodeArea('');
     setDate('');
     setAddress('');
     setProblem('');
@@ -117,11 +141,14 @@ export default function BookServiceForm({ selectedAppliance, selectedService, on
               DIRECT WHATSAPP BOOKING
             </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white">Book Appliance Service</h2>
-            <p className="text-slate-300 text-sm mt-2">Fill out the form below to send your booking request directly to our WhatsApp hotline (8471084775)</p>
+            <p className="text-slate-300 text-sm mt-2">
+              Serving Mumbai Western Suburbs & Mira-Bhayandar. Instant dispatch via WhatsApp hotline (8471084775).
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             
+            {/* Name & Phone */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-bold text-gold uppercase mb-2">Customer Name *</label>
@@ -148,6 +175,7 @@ export default function BookServiceForm({ selectedAppliance, selectedService, on
               </div>
             </div>
 
+            {/* Appliance & Service */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-bold text-gold uppercase mb-2">Select Appliance *</label>
@@ -183,7 +211,33 @@ export default function BookServiceForm({ selectedAppliance, selectedService, on
               </div>
             </div>
 
+            {/* Area & PIN Code (Datalist Autocomplete) + Date */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-xs font-bold text-gold uppercase mb-2">
+                  Mumbai Area & PIN Code *
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    required
+                    list="mumbai-pincodes-list"
+                    value={pincodeArea}
+                    onChange={(e) => setPincodeArea(e.target.value)}
+                    placeholder="Type or select Area / PIN (e.g. Kandivali West - 400067)"
+                    className="w-full px-4 py-3 rounded-xl custom-input text-sm"
+                  />
+                  <datalist id="mumbai-pincodes-list">
+                    {MUMBAI_PINCODE_LIST.map((loc, idx) => (
+                      <option key={idx} value={`${loc.area} (${loc.pincode})`} />
+                    ))}
+                  </datalist>
+                </div>
+                <span className="text-[10px] text-slate-400 mt-1 block">
+                  Select your area or type your 6-digit PIN code
+                </span>
+              </div>
+
               <div>
                 <label className="block text-xs font-bold text-gold uppercase mb-2">Preferred Date</label>
                 <input
@@ -193,6 +247,10 @@ export default function BookServiceForm({ selectedAppliance, selectedService, on
                   className="w-full px-4 py-3 rounded-xl custom-input text-sm"
                 />
               </div>
+            </div>
+
+            {/* Time Slot & Service Address */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-bold text-gold uppercase mb-2">Preferred Time Slot</label>
                 <select
@@ -205,20 +263,21 @@ export default function BookServiceForm({ selectedAppliance, selectedService, on
                   <option value="Evening (04:00 PM - 08:00 PM)">Evening (04:00 PM - 08:00 PM)</option>
                 </select>
               </div>
+
+              <div>
+                <label className="block text-xs font-bold text-gold uppercase mb-2">Service Address (Flat/Building/Street) *</label>
+                <input
+                  type="text"
+                  required
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  placeholder="Flat No, Wing, Building Name, Landmark"
+                  className="w-full px-4 py-3 rounded-xl custom-input text-sm"
+                />
+              </div>
             </div>
 
-            <div>
-              <label className="block text-xs font-bold text-gold uppercase mb-2">Service Address *</label>
-              <input
-                type="text"
-                required
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                placeholder="House No, Area, Street, Landmark"
-                className="w-full px-4 py-3 rounded-xl custom-input text-sm"
-              />
-            </div>
-
+            {/* Problem Details */}
             <div>
               <label className="block text-xs font-bold text-gold uppercase mb-2">Problem / Work Details</label>
               <textarea

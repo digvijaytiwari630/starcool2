@@ -14,6 +14,7 @@ import BrandSupport from './components/BrandSupport';
 import WhyChooseUs from './components/WhyChooseUs';
 import HowItWorks from './components/HowItWorks';
 import FaqSection from './components/FaqSection';
+import ServiceAreasPincodes from './components/ServiceAreasPincodes';
 import BookServiceForm from './components/BookServiceForm';
 import ContactAndMap from './components/ContactAndMap';
 import Footer from './components/Footer';
@@ -24,6 +25,8 @@ export default function App() {
   const [splashFinished, setSplashFinished] = useState(false);
   const [selectedAppliance, setSelectedAppliance] = useState('AC');
   const [selectedService, setSelectedService] = useState('AC Repair & Service');
+  const [selectedArea, setSelectedArea] = useState('');
+  const [selectedPincode, setSelectedPincode] = useState('');
 
   // Quick Action Modal State
   const [quickModalOpen, setQuickModalOpen] = useState(false);
@@ -41,6 +44,15 @@ export default function App() {
   const handleFillFormDirect = (appliance, serviceName) => {
     setSelectedAppliance(appliance);
     setSelectedService(serviceName);
+    const bookSec = document.getElementById('book-service');
+    if (bookSec) {
+      bookSec.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleSelectAreaPincode = (area, pincode) => {
+    setSelectedArea(area);
+    setSelectedPincode(pincode);
     const bookSec = document.getElementById('book-service');
     if (bookSec) {
       bookSec.scrollIntoView({ behavior: 'smooth' });
@@ -70,9 +82,12 @@ export default function App() {
       <WhyChooseUs />
       <HowItWorks />
       <FaqSection />
+      <ServiceAreasPincodes onSelectAreaPincode={handleSelectAreaPincode} />
       <BookServiceForm
         selectedAppliance={selectedAppliance}
         selectedService={selectedService}
+        selectedArea={selectedArea}
+        selectedPincode={selectedPincode}
         onApplianceChange={(app) => setSelectedAppliance(app)}
       />
       <ContactAndMap />

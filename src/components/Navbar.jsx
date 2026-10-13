@@ -26,6 +26,7 @@ export default function Navbar() {
           <a href="#washing-machine-service" className="hover:text-gold transition-colors">Washing Machine</a>
           <a href="#refrigerator-service" className="hover:text-gold transition-colors">Refrigerator</a>
           <a href="#ac-brands" className="hover:text-gold transition-colors">Brands</a>
+          <a href="#service-areas" className="hover:text-gold transition-colors">Service Areas</a>
           <a href="#contact" className="hover:text-gold transition-colors">Contact</a>
         </nav>
 
@@ -82,6 +83,7 @@ export default function Navbar() {
             <a href="#washing-machine-service" onClick={() => setMobileOpen(false)} className="hover:text-gold transition-colors py-2 border-b border-slate-800">Washing Machine</a>
             <a href="#refrigerator-service" onClick={() => setMobileOpen(false)} className="hover:text-gold transition-colors py-2 border-b border-slate-800">Refrigerator</a>
             <a href="#ac-brands" onClick={() => setMobileOpen(false)} className="hover:text-gold transition-colors py-2 border-b border-slate-800">Brands</a>
+            <a href="#service-areas" onClick={() => setMobileOpen(false)} className="hover:text-gold transition-colors py-2 border-b border-slate-800">Service Areas</a>
             <a href="#why-choose-us" onClick={() => setMobileOpen(false)} className="hover:text-gold transition-colors py-2 border-b border-slate-800">Why Choose Us</a>
             <a href="#contact" onClick={() => setMobileOpen(false)} className="hover:text-gold transition-colors py-2">Contact Us</a>
           </nav>
