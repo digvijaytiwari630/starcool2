@@ -26,10 +26,12 @@ export default function App() {
     if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
       const urlTheme = urlParams.get('theme');
-      if (urlTheme === 'light' || urlTheme === 'white') return 'light';
       if (urlTheme === 'dark') return 'dark';
+      if (urlTheme === 'light' || urlTheme === 'white') return 'light';
+      const stored = localStorage.getItem('acseva_theme');
+      if (stored) return stored;
     }
-    return localStorage.getItem('acseva_theme') || 'dark';
+    return 'light';
   });
   const [splashFinished, setSplashFinished] = useState(() => {
     if (typeof window !== 'undefined') {
