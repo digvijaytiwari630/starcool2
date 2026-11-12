@@ -7,12 +7,11 @@ import MainServices from './components/MainServices';
 import AcServicesAccordion from './components/AcServicesAccordion';
 import BrandsFilter from './components/BrandsFilter';
 import DuctableCassetteBrands from './components/DuctableCassetteBrands';
-import WashingMachineService from './components/WashingMachineService';
-import RefrigeratorService from './components/RefrigeratorService';
-import SecondHandFridgeSection from './components/SecondHandFridgeSection';
 import BrandSupport from './components/BrandSupport';
+import LocalSeoContent from './components/LocalSeoContent';
 import WhyChooseUs from './components/WhyChooseUs';
 import HowItWorks from './components/HowItWorks';
+import BlogSection from './components/BlogSection';
 import FaqSection from './components/FaqSection';
 import ServiceAreasPincodes from './components/ServiceAreasPincodes';
 import BookServiceForm from './components/BookServiceForm';
@@ -20,6 +19,8 @@ import ContactAndMap from './components/ContactAndMap';
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
 import QuickBookingModal from './components/QuickBookingModal';
+import ServiceDetailPage from './components/ServiceDetailPage';
+import { SERVICE_PAGES_DATA } from './servicePagesData';
 
 export default function App() {
   const [theme, setTheme] = useState(() => {
@@ -28,7 +29,7 @@ export default function App() {
       const urlTheme = urlParams.get('theme');
       if (urlTheme === 'dark') return 'dark';
       if (urlTheme === 'light' || urlTheme === 'white') return 'light';
-      const stored = localStorage.getItem('acseva_theme');
+      const stored = localStorage.getItem('starcool_theme');
       if (stored) return stored;
     }
     return 'light';
@@ -40,7 +41,7 @@ export default function App() {
     }
     return false;
   });
-  const [selectedAppliance, setSelectedAppliance] = useState('AC');
+  const [selectedAppliance, setSelectedAppliance] = useState('Split AC');
   const [selectedService, setSelectedService] = useState('AC Repair & Service');
   const [selectedArea, setSelectedArea] = useState('');
   const [selectedPincode, setSelectedPincode] = useState('');
@@ -49,6 +50,10 @@ export default function App() {
   const [quickModalOpen, setQuickModalOpen] = useState(false);
   const [modalServiceName, setModalServiceName] = useState('');
   const [modalAppliance, setModalAppliance] = useState('');
+
+  // Path-based dedicated Service Page routing for Google Search Console
+  const currentPath = typeof window !== 'undefined' ? window.location.pathname.replace(/^\/|\/$/g, '') : '';
+  const currentServicePage = SERVICE_PAGES_DATA[currentPath];
 
   useEffect(() => {
     if (theme === 'light') {
@@ -63,7 +68,7 @@ export default function App() {
   const toggleTheme = () => {
     setTheme((prev) => {
       const nextTheme = prev === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('acseva_theme', nextTheme);
+      localStorage.setItem('starcool_theme', nextTheme);
       return nextTheme;
     });
   };
@@ -94,6 +99,18 @@ export default function App() {
     }
   };
 
+  // If URL is a dedicated service page (e.g. /ac-repair-mumbai), render ServiceDetailPage
+  if (currentServicePage) {
+    return (
+      <ServiceDetailPage
+        pageData={currentServicePage}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
+    );
+  }
+
+  // Otherwise render full homepage
   return (
     <div className={`${theme === 'light' ? 'light-mode bg-[#F8FAFC] text-slate-900' : 'dark-mode bg-[#020611] text-slate-100'} min-h-screen font-sans selection:bg-gold selection:text-midnight-dark transition-colors duration-300`}>
       {!splashFinished && (
@@ -110,12 +127,11 @@ export default function App() {
       <AcServicesAccordion />
       <BrandsFilter onBookClick={handleSelectService} />
       <DuctableCassetteBrands />
-      <WashingMachineService onBookClick={handleSelectService} />
-      <RefrigeratorService onBookClick={handleSelectService} />
-      <SecondHandFridgeSection onBookClick={handleSelectService} />
+      <LocalSeoContent />
       <BrandSupport />
       <WhyChooseUs />
       <HowItWorks />
+      <BlogSection />
       <FaqSection />
       <ServiceAreasPincodes onSelectAreaPincode={handleSelectAreaPincode} />
       <BookServiceForm

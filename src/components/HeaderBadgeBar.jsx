@@ -1,13 +1,14 @@
-import React from 'react';
+﻿import React from 'react';
 
 const BADGES = [
-  { id: 'ac-sales', title: 'AC SALES', icon: 'fa-snowflake', color: 'text-cyan-400', appliance: 'AC', service: 'AC Repair & Service' },
-  { id: 'ac-service', title: 'AC SERVICE', icon: 'fa-wrench', color: 'text-gold', appliance: 'AC', service: 'AC Repair & Service' },
-  { id: 'ac-repair', title: 'AC REPAIR', icon: 'fa-gear', color: 'text-gold', appliance: 'AC', service: 'AC Repair & Service' },
-  { id: 'ac-install', title: 'AC INSTALLATION', icon: 'fa-user-gear', color: 'text-cyan-400', appliance: 'AC', service: 'AC Installation' },
-  { id: 'fridge-service', title: 'FRIDGE SERVICE', icon: 'fa-temperature-arrow-down', color: 'text-gold', appliance: 'Refrigerator', service: 'Refrigerator Repair' },
-  { id: 'washing-service', title: 'WASHING MACHINE SERVICE', icon: 'fa-arrows-spin', color: 'text-cyan-400', appliance: 'Washing Machine', service: 'Washing Machine Repair' },
-  { id: 'amc-support', title: 'AMC & SUPPORT', icon: 'fa-handshake-angle', color: 'text-gold', appliance: 'AC', service: 'AC Maintenance / AMC' },
+  { id: 'ac-repair', title: 'AC REPAIR & FIX', icon: 'fa-snowflake', color: 'text-cyan-400', appliance: 'AC', service: 'AC Repair & Service' },
+  { id: 'split-ac', title: 'SPLIT AC SERVICE', icon: 'fa-fan', color: 'text-gold', appliance: 'AC', service: 'Split AC Repair' },
+  { id: 'window-ac', title: 'WINDOW AC SERVICE', icon: 'fa-window-maximize', color: 'text-cyan-400', appliance: 'AC', service: 'Window AC Repair' },
+  { id: 'gas-refill', title: 'GAS REFILLING', icon: 'fa-gas-pump', color: 'text-gold', appliance: 'AC', service: 'AC Gas Charging' },
+  { id: 'pcb-repair', title: 'PCB CIRCUIT REPAIR', icon: 'fa-microchip', color: 'text-cyan-400', appliance: 'AC', service: 'AC PCB Repair' },
+  { id: 'ac-install', title: 'AC INSTALLATION', icon: 'fa-wrench', color: 'text-gold', appliance: 'AC', service: 'AC Installation' },
+  { id: 'cassette-duct', title: 'CASSETTE & DUCTABLE', icon: 'fa-border-all', color: 'text-cyan-400', appliance: 'AC', service: 'Cassette AC Repair' },
+  { id: 'amc-support', title: 'AC MAINTENANCE / AMC', icon: 'fa-handshake-angle', color: 'text-gold', appliance: 'AC', service: 'AC Maintenance / AMC' },
 ];
 
 export default function HeaderBadgeBar({ onSelectBadge }) {

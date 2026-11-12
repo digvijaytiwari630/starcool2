@@ -15,7 +15,7 @@ export default function FaqSection() {
         <div className="text-center mb-12">
           <span className="text-xs font-bold tracking-[0.2em] text-gold uppercase mb-2 block">EXPERT ANSWERS</span>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white">Frequently Asked Questions</h2>
-          <p className="text-slate-400 text-sm mt-2">Genuine answers to common AC, Washing Machine & Refrigerator service queries</p>
+          <p className="text-slate-400 text-sm mt-2">Genuine answers to common AC repair, servicing, installation & gas refilling queries in Mumbai</p>
           <div className="h-1 w-20 bg-gradient-to-r from-gold to-cyan-400 mx-auto mt-4 rounded-full"></div>
         </div>
 

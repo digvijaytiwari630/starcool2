@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 
 export default function SplashScreen({ onFinish }) {
   const [fadeOut, setFadeOut] = useState(false);
@@ -26,8 +26,8 @@ export default function SplashScreen({ onFinish }) {
         {/* Logo Container */}
         <div className="relative z-10 p-2.5 bg-navy-card rounded-2xl border-2 border-gold/50 shadow-2xl shadow-gold/30 mb-6 w-full">
           <img
-            src="/assets/logo.jpg"
-            alt="AC Seva 3D Metallic Banner"
+            src="/assets/starcool-logo.jpg"
+            alt="STAR COOL AIR CON 3D Metallic Banner"
             className="w-full h-auto rounded-xl object-contain shadow-lg"
           />
         </div>
@@ -41,10 +41,11 @@ export default function SplashScreen({ onFinish }) {
 
         {/* Tagline */}
         <div className="text-center">
-          <h1 className="text-3xl font-black tracking-wider gold-gradient-text">AC SEVA</h1>
-          <p className="text-xs font-bold tracking-[0.35em] text-electric uppercase mt-1">FAST SERVICE</p>
+          <h1 className="text-3xl font-black tracking-wider gold-gradient-text">STAR COOL AIR CON</h1>
+          <p className="text-xs font-bold tracking-[0.35em] text-electric uppercase mt-1">AC REPAIR & SERVICES</p>
         </div>
       </div>
     </div>
   );
 }
+

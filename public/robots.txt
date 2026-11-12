@@ -2,4 +2,5 @@ User-agent: *
 Allow: /
 
 # Sitemap Location
-Sitemap: https://acseva.in/sitemap.xml
+Sitemap: https://acseva.shop/sitemap.xml
+Sitemap: https://starcoolaircon.in/sitemap.xml

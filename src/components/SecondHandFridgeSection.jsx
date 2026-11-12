@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function SecondHandFridgeSection({ onBookClick }) {
   return (
@@ -16,7 +16,7 @@ export default function SecondHandFridgeSection({ onBookClick }) {
                 Second Hand Refrigerator <span className="gold-gradient-text">Inspection & Support</span>
               </h2>
               <p className="text-slate-300 text-sm leading-relaxed mb-6">
-                Looking to buy or sell a used refrigerator? AC Seva provides expert technician health-checkup services for second-hand fridges. Our technicians inspect compressor health, gas pressure level, door gasket seal condition, and cooling performance so you make a confident decision.
+                Looking to buy or sell a used refrigerator? Star Cool Air Con provides expert technician health-checkup services for second-hand fridges. Our technicians inspect compressor health, gas pressure level, door gasket seal condition, and cooling performance so you make a confident decision.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">

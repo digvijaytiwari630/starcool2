@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function HowItWorks() {
   const steps = [
-    { num: 1, title: 'Contact Us', desc: 'Call 8471084775 or fill our instant booking form online.' },
-    { num: 2, title: 'Share Your Problem', desc: 'Specify your appliance type, brand, and problem symptoms.' },
-    { num: 3, title: 'Technician Visits', desc: 'Our expert arrives at your doorstep for thorough diagnostic.' },
-    { num: 4, title: 'Repair Completed', desc: 'Quality repair done, verified testing, and job warranty provided.' }
+    { num: 1, title: 'Book or Call Us', desc: 'Call 8108437170 or send your booking request via WhatsApp.' },
+    { num: 2, title: 'Share AC Problem', desc: 'Specify your AC type (Split/Window/Inverter), brand, and symptoms.' },
+    { num: 3, title: 'Technician Visits', desc: 'Our certified expert arrives at your doorstep for diagnosis within 30–45 mins.' },
+    { num: 4, title: 'Repair Completed', desc: 'Transparent upfront quote, genuine spare parts used, and job warranty provided.' }
   ];
 
   return (

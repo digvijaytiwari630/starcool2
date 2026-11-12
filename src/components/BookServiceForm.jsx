@@ -1,35 +1,57 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { MUMBAI_PINCODE_LIST } from '../seoData';
 
 const SERVICES_MAP = {
-  AC: [
-    'AC Repair & Service',
-    'AC Installation',
-    'Split AC Repair',
-    'Window AC Repair',
-    'Ductable AC Repair',
-    'Cassette AC Repair',
-    'AC Gas Charging',
-    'AC Maintenance / AMC'
+  'Split AC': [
+    'Split AC Repair & Troubleshooting',
+    'Split AC Deep Jet Foam Cleaning',
+    'Split AC Gas Refilling (R32 / R410A)',
+    'Split AC Installation & Uninstallation',
+    'Split AC PCB Circuit Board Repair',
+    'Split AC Compressor Replacement',
+    'Split AC Water Leakage Repair',
+    'Split AC Fan Motor Replacement',
+    'Split AC AMC (Annual Maintenance)'
   ],
-  Refrigerator: [
-    'Refrigerator Repair',
-    'Refrigerator Service',
-    'Cooling Problem Fix',
-    'Fridge Gas Charging',
-    'Compressor Repair',
-    'Water Leakage Fix',
-    'Ice Formation Problem',
-    'Door Gasket Replacement'
+  'Window AC': [
+    'Window AC Repair & Troubleshooting',
+    'Window AC Deep Chemical Servicing',
+    'Window AC Gas Refilling (R22 / R32)',
+    'Window AC Installation & Bracket Fitting',
+    'Window AC Compressor Repair',
+    'Window AC Fan Motor & Capacitor Fix',
+    'Window AC Noise & Vibration Fix'
   ],
-  'Washing Machine': [
-    'Washing Machine Repair',
-    'Washing Machine Service',
-    'Washing Machine Installation',
-    'Drainage Problem Fix',
-    'Not Starting Repair',
-    'Water Leakage Fix',
-    'Spin & Noise Problem'
+  'Inverter AC': [
+    'Inverter AC Repair & Error Code Diagnosis',
+    'Inverter AC PCB Board Repair',
+    'Inverter AC IPM Module Replacement',
+    'Inverter AC Gas Charging & Leak Test',
+    'Inverter AC Deep Jet Servicing',
+    'Inverter Sensor & Thermistor Fix'
+  ],
+  'Cassette AC': [
+    'Cassette AC Repair & Troubleshooting',
+    'Cassette AC Jet Cleaning & Filter Wash',
+    'Cassette AC Drain Pump Repair / Replacement',
+    'Cassette AC PCB & Remote Sensor Fix',
+    'Cassette AC Refrigerant Gas Refilling',
+    'Cassette AC Installation & Commissioning'
+  ],
+  'Ductable AC': [
+    'Ductable AC Central Cooling Diagnosis',
+    'Ductable AC Gas Charging & Vacuuming',
+    'Ductable AC Blower Motor & Belt Check',
+    'Ductable AC Thermostat & Damper Service',
+    'Ductable AC Coil Chemical Cleaning',
+    'Ductable AC Commercial AMC Contract'
+  ],
+  'Tower / Commercial AC': [
+    'Tower AC Repair & Maintenance',
+    'Commercial AC Jet Servicing',
+    'Commercial AC Gas Refilling',
+    'Electrical Control Panel & PCB Repair',
+    'Compressor Replacement (Commercial)'
   ]
 };
 
@@ -40,8 +62,9 @@ export default function BookServiceForm({
   selectedArea,
   onApplianceChange
 }) {
-  const [appliance, setAppliance] = useState(selectedAppliance || 'AC');
-  const [service, setService] = useState(selectedService || 'AC Repair & Service');
+  const defaultType = selectedAppliance && SERVICES_MAP[selectedAppliance] ? selectedAppliance : 'Split AC';
+  const [acType, setAcType] = useState(defaultType);
+  const [service, setService] = useState(selectedService || 'Split AC Repair & Troubleshooting');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [pincodeArea, setPincodeArea] = useState(
@@ -54,8 +77,12 @@ export default function BookServiceForm({
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    if (selectedAppliance) setAppliance(selectedAppliance);
-    if (selectedService) setService(selectedService);
+    if (selectedAppliance && SERVICES_MAP[selectedAppliance]) {
+      setAcType(selectedAppliance);
+    }
+    if (selectedService) {
+      setService(selectedService);
+    }
   }, [selectedAppliance, selectedService]);
 
   useEffect(() => {
@@ -66,104 +93,86 @@ export default function BookServiceForm({
     }
   }, [selectedPincode, selectedArea]);
 
-  const handleApplianceSelect = (val) => {
-    setAppliance(val);
+  const handleAcTypeSelect = (val) => {
+    setAcType(val);
     if (SERVICES_MAP[val] && SERVICES_MAP[val].length > 0) {
       setService(SERVICES_MAP[val][0]);
     } else {
       setService('');
     }
-    if (onApplianceChange) onApplianceChange(val);
-  };
-
-  const sendToWhatsApp = () => {
-    if (!name.trim()) {
-      alert('Please enter your full name.');
-      return;
+    if (onApplianceChange) {
+      onApplianceChange(val);
     }
-    const cleanPhone = phone.replace(/[^0-9]/g, '');
-    if (cleanPhone.length !== 10) {
-      alert('Please enter a valid 10-digit mobile number.');
-      return;
-    }
-    if (!pincodeArea.trim()) {
-      alert('Please select or enter your Area & PIN code.');
-      return;
-    }
-    if (!address.trim()) {
-      alert('Please enter your service address.');
-      return;
-    }
-
-    const messageText = 
-`*New Service Booking - AC Seva* 🛠️
-
-👤 *Customer Name:* ${name.trim()}
-📞 *Mobile Number:* ${cleanPhone}
-🔌 *Appliance:* ${appliance}
-🛠️ *Required Service:* ${service}
-📍 *Area & PIN Code:* ${pincodeArea.trim()}
-🏠 *Service Address:* ${address.trim()}
-📅 *Preferred Date:* ${date || 'As soon as possible'}
-⏰ *Preferred Time Slot:* ${time}
-📝 *Problem Description:* ${problem.trim() || 'General Service & Diagnostic'}`;
-
-    const whatsappUrl = `https://wa.me/918471084775?text=${encodeURIComponent(messageText)}`;
-    
-    // Open directly to owner's WhatsApp with noopener and noreferrer for tab security
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-    setShowModal(true);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendToWhatsApp();
+
+    const text = encodeURIComponent(
+      `*New AC Service Booking - Star Cool Air Con*\n\n` +
+      `👤 *Customer Name:* ${name}\n` +
+      `📞 *Phone Number:* ${phone}\n` +
+      `❄️ *AC Type:* ${acType}\n` +
+      `🛠️ *Service Required:* ${service}\n` +
+      `📍 *Mumbai Area / PIN:* ${pincodeArea || 'Mumbai'}\n` +
+      `🏠 *Address:* ${address}\n` +
+      `📅 *Preferred Date:* ${date || 'Earliest available'}\n` +
+      `⏰ *Time Slot:* ${time}\n` +
+      `⚠️ *Problem Description:* ${problem || 'General Service / Diagnosis'}\n\n` +
+      `_Sent from website booking portal (starcoolaircon.in)_`
+    );
+
+    const waUrl = `https://wa.me/918108437170?text=${text}`;
+
+    setShowModal(true);
+    setTimeout(() => {
+      window.open(waUrl, '_blank');
+    }, 600);
   };
 
   const closeModal = () => {
     setShowModal(false);
-    setName('');
-    setPhone('');
-    setPincodeArea('');
-    setDate('');
-    setAddress('');
-    setProblem('');
   };
 
   return (
-    <section id="book-service" className="py-16 relative">
+    <section id="book-service" className="py-16 bg-navy/80 relative border-t border-gold/15">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="glass-panel p-8 sm:p-10 rounded-3xl gold-border-glow shadow-2xl relative overflow-hidden bg-midnight-card/90">
-          <div className="absolute top-0 right-0 w-40 h-40 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        {/* Form Title */}
+        <div className="text-center mb-10">
+          <span className="px-3.5 py-1 rounded-full bg-gold/15 text-gold border border-gold/30 text-xs font-bold uppercase tracking-wider inline-block mb-3">
+            INSTANT DOORSTEP BOOKING
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-white">
+            Book <span className="gold-gradient-text">AC Repair & Service</span> in Mumbai
+          </h2>
+          <p className="text-slate-300 text-sm mt-3">
+            Fill the form below for instant technician assignment. Same-day service available across all Mumbai zones.
+          </p>
+          <div className="h-1 w-20 bg-gradient-to-r from-gold to-cyan-400 mx-auto mt-4 rounded-full"></div>
+        </div>
 
-          <div className="text-center mb-8">
-            <span className="px-4 py-1.5 rounded-full bg-midnight-dark border border-gold/40 text-gold text-xs font-bold uppercase tracking-wider inline-block mb-3 shadow-md">
-              DIRECT WHATSAPP BOOKING
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white">Book Appliance Service</h2>
-            <p className="text-slate-300 text-sm mt-2">
-              Serving Mumbai Western Suburbs & Mira-Bhayandar. Instant dispatch via WhatsApp hotline (8471084775).
-            </p>
-          </div>
-
+        {/* Booking Card */}
+        <div className="glass-panel p-6 sm:p-10 rounded-3xl gold-border-glow shadow-2xl relative">
+          
           <form onSubmit={handleSubmit} className="space-y-6">
             
             {/* Name & Phone */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-xs font-bold text-gold uppercase mb-2">Customer Name *</label>
+                <label className="block text-xs font-bold text-gold uppercase mb-2">Your Full Name *</label>
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter your full name"
+                  placeholder="e.g. Rahul Sharma"
                   className="w-full px-4 py-3 rounded-xl custom-input text-sm"
                 />
               </div>
+
               <div>
-                <label className="block text-xs font-bold text-gold uppercase mb-2">Mobile Number *</label>
+                <label className="block text-xs font-bold text-gold uppercase mb-2">Mobile Number (WhatsApp) *</label>
                 <input
                   type="tel"
                   required
@@ -176,19 +185,22 @@ export default function BookServiceForm({
               </div>
             </div>
 
-            {/* Appliance & Service */}
+            {/* AC Type & Service */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label className="block text-xs font-bold text-gold uppercase mb-2">Select Appliance *</label>
+                <label className="block text-xs font-bold text-gold uppercase mb-2">Select AC Type *</label>
                 <select
-                  value={appliance}
-                  onChange={(e) => handleApplianceSelect(e.target.value)}
+                  value={acType}
+                  onChange={(e) => handleAcTypeSelect(e.target.value)}
                   required
                   className="w-full px-4 py-3 rounded-xl custom-input text-sm"
                 >
-                  <option value="AC">Air Conditioner (AC)</option>
-                  <option value="Refrigerator">Refrigerator</option>
-                  <option value="Washing Machine">Washing Machine</option>
+                  <option value="Split AC">Split AC (Inverter / Non-Inverter)</option>
+                  <option value="Window AC">Window AC</option>
+                  <option value="Inverter AC">Inverter AC</option>
+                  <option value="Cassette AC">Cassette AC (Commercial Ceiling)</option>
+                  <option value="Ductable AC">Ductable AC (Central Cooling)</option>
+                  <option value="Tower / Commercial AC">Tower / Commercial AC</option>
                 </select>
               </div>
               <div>
@@ -199,14 +211,14 @@ export default function BookServiceForm({
                   required
                   className="w-full px-4 py-3 rounded-xl custom-input text-sm"
                 >
-                  {appliance && SERVICES_MAP[appliance] ? (
-                    SERVICES_MAP[appliance].map((srv, idx) => (
+                  {acType && SERVICES_MAP[acType] ? (
+                    SERVICES_MAP[acType].map((srv, idx) => (
                       <option key={idx} value={srv}>
                         {srv}
                       </option>
                     ))
                   ) : (
-                    <option value="">-- Select Appliance First --</option>
+                    <option value="AC Repair & Troubleshooting">AC Repair & Troubleshooting</option>
                   )}
                 </select>
               </div>
@@ -280,12 +292,12 @@ export default function BookServiceForm({
 
             {/* Problem Details */}
             <div>
-              <label className="block text-xs font-bold text-gold uppercase mb-2">Problem / Work Details</label>
+              <label className="block text-xs font-bold text-gold uppercase mb-2">Problem / Symptoms (Optional)</label>
               <textarea
                 rows="3"
                 value={problem}
                 onChange={(e) => setProblem(e.target.value)}
-                placeholder="Describe your appliance problem or service requirements (e.g., AC not cooling, washing machine noise)..."
+                placeholder="Describe your AC problem (e.g. AC not cooling, water leakage from indoor unit, strange sound, PCB error code, low gas)..."
                 className="w-full px-4 py-3 rounded-xl custom-input text-sm"
               ></textarea>
             </div>
@@ -296,7 +308,7 @@ export default function BookServiceForm({
                 className="flex-1 py-4 rounded-xl btn-gold-gradient font-extrabold text-base tracking-wide flex items-center justify-center gap-2"
               >
                 <i className="fa-brands fa-whatsapp text-2xl"></i>
-                <span>Book Service Now (Direct WhatsApp)</span>
+                <span>Book AC Service Now (Direct WhatsApp)</span>
               </button>
             </div>
 
@@ -315,7 +327,7 @@ export default function BookServiceForm({
             </div>
             <h3 className="text-2xl font-extrabold text-white mb-2">WhatsApp Redirected!</h3>
             <p className="text-sm text-slate-300 mb-6">
-              Your booking details have been sent to our WhatsApp hotline (8471084775). Our technician will contact you shortly.
+              Your booking details have been sent to our WhatsApp hotline (8108437170). Our technician will contact you shortly.
             </p>
             <button onClick={closeModal} className="w-full py-3 rounded-xl btn-gold-gradient font-bold text-sm shadow-lg">
               Done

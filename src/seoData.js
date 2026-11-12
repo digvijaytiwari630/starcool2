@@ -1,4 +1,4 @@
-// AC Seva - Complete Master SEO Database, Pincode Directory & Schema Provider
+// Star Cool Air Con - Master SEO Database & Schema Provider
 
 export const MUMBAI_PINCODE_LIST = [
   { area: "Kandivali West", pincode: "400067", zone: "Western Suburbs" },
@@ -11,155 +11,88 @@ export const MUMBAI_PINCODE_LIST = [
   { area: "Goregaon West", pincode: "400104, 400062", zone: "Western Suburbs" },
   { area: "Andheri East", pincode: "400069", zone: "Western Suburbs" },
   { area: "Andheri West", pincode: "400058", zone: "Western Suburbs" },
-  { area: "Andheri Court (HO)", pincode: "400053", zone: "Western Suburbs" },
-  { area: "Chakala (Andheri)", pincode: "400093", zone: "Western Suburbs" },
-  { area: "JB Nagar (Andheri)", pincode: "400059", zone: "Western Suburbs" },
-  { area: "Marol Naka", pincode: "400059, 400072", zone: "Western Suburbs" },
+  { area: "Marol (Andheri)", pincode: "400059, 400072", zone: "Western Suburbs" },
   { area: "Sakinaka", pincode: "400072", zone: "Western Suburbs" },
   { area: "Vile Parle East", pincode: "400057", zone: "Western Suburbs" },
   { area: "Vile Parle West", pincode: "400056", zone: "Western Suburbs" },
   { area: "Santacruz East", pincode: "400055", zone: "Western Suburbs" },
   { area: "Santacruz West", pincode: "400054", zone: "Western Suburbs" },
-  { area: "Khar East", pincode: "400051", zone: "Western Suburbs" },
   { area: "Khar West", pincode: "400052", zone: "Western Suburbs" },
-  { area: "Bandra East", pincode: "400051", zone: "Western Suburbs" },
   { area: "Bandra West", pincode: "400050", zone: "Western Suburbs" },
+  { area: "Jogeshwari West", pincode: "400102", zone: "Western Suburbs" },
   { area: "Dahisar East", pincode: "400068", zone: "Western Suburbs" },
   { area: "Dahisar West", pincode: "400068", zone: "Western Suburbs" },
+  { area: "Charkop (Kandivali)", pincode: "400067", zone: "Western Suburbs" },
   { area: "Mira Road East", pincode: "401107", zone: "Mira-Bhayandar" },
   { area: "Mira Road West", pincode: "401107", zone: "Mira-Bhayandar" },
   { area: "Bhayandar East", pincode: "401105", zone: "Mira-Bhayandar" },
   { area: "Bhayandar West", pincode: "401101", zone: "Mira-Bhayandar" }
 ];
 
-export const MASTER_SEO_METADATA = {
-  homepage: {
-    title: "AC Repair & Service Mumbai | Split, Ductable & Cassette AC | AC Seva",
-    metaDescription: "AC Seva provides professional AC repair, service and installation in Mumbai (Borivali, Kandivali, Malad, Goregaon, Andheri, Bandra, Mira-Bhayandar). 30-45 minute doorstep technician arrival.",
-    h1: "Fast & Reliable AC Repair & Home Appliance Service in Mumbai",
-    canonical: "https://acseva.in/",
-    schema: {
-      "@context": "https://schema.org",
-      "@type": "HomeAndConstructionBusiness",
-      "name": "AC Seva",
-      "image": "https://acseva.in/assets/logo.jpg",
-      "url": "https://acseva.in",
-      "telephone": "+918471084775",
-      "priceRange": "₹₹",
-      "description": "Fast & Reliable AC Repair, AC Service, AC Installation, Washing Machine & Refrigerator Repair in Mumbai.",
-      "slogan": "FAST SERVICE",
-      "hasMap": "https://maps.app.goo.gl/jzqsiHD1Nru5PBGX6",
-      "areaServed": [
-        { "@type": "City", "name": "Mumbai" },
-        { "@type": "AdministrativeArea", "name": "Western Suburbs, Mumbai" },
-        { "@type": "AdministrativeArea", "name": "Mira Bhayandar" }
-      ]
-    }
-  },
-  
-  // Category SEO
-  acRepair: {
-    title: "AC Repair & Service Mumbai | AC Fitting & Maintenance | AC Seva",
-    metaDescription: "Expert AC repair service in Mumbai Western Suburbs. Genuine spare parts, fast response, and certified technicians across Borivali, Kandivali, Andheri, and nearby areas.",
-    h1: "Professional AC Repair & Servicing in Mumbai",
-    canonical: "https://acseva.in/ac-repair"
-  },
-  
-  splitAcService: {
-    title: "Split AC Repair & Service | Split AC Installation & Fitting | AC Seva",
-    metaDescription: "Comprehensive Split AC repair, jet foam servicing, and precision wall mounting installation in Mumbai. Expert care for Voltas, LG, Daikin, Samsung & all top brands.",
-    h1: "Split AC Repair, Service & Fitting",
-    canonical: "https://acseva.in/split-ac-service"
-  },
-
-  ductableAcService: {
-    title: "Ductable AC Repair & Service | Ductable AC Installation | AC Seva",
-    metaDescription: "Specialized Ductable AC repair, duct cleaning, AHU coil servicing, and commercial installation for Daikin, Carrier, Blue Star, LG & Voltas in Mumbai.",
-    h1: "Ductable AC Repair, Service & Installation",
-    canonical: "https://acseva.in/ductable-ac-service"
-  },
-
-  cassetteAcService: {
-    title: "Cassette AC Repair & Service | Cassette AC Installation | AC Seva",
-    metaDescription: "Ceiling Cassette AC repair, drain pump troubleshooting, chemical jet wash, and flush mounting installation for office and showroom commercial spaces in Mumbai.",
-    h1: "Cassette AC Repair & Fitting Services",
-    canonical: "https://acseva.in/cassette-ac-service"
-  },
-
-  washingMachineRepair: {
-    title: "Washing Machine Repair & Service Mumbai | Front & Top Load | AC Seva",
-    metaDescription: "Expert Washing Machine repair and servicing in Mumbai. Motor replacement, drum bearing overhaul, spin noise, water leakage & PCB repair for all major brands.",
-    h1: "Washing Machine Repair & Servicing in Mumbai",
-    canonical: "https://acseva.in/washing-machine-repair"
-  },
-
-  refrigeratorRepair: {
-    title: "Refrigerator Repair & Service Mumbai | Single, Double & Side-by-Side | AC Seva",
-    metaDescription: "Reliable Refrigerator repair, gas refilling, compressor troubleshooting, thermostat replacement & cooling failure fixes in Mumbai Western Suburbs.",
-    h1: "Refrigerator Repair & Maintenance in Mumbai",
-    canonical: "https://acseva.in/refrigerator-repair"
-  },
-
-  secondHandFridge: {
-    title: "Second Hand Refrigerator & Used Fridge Enquiries | AC Seva",
-    metaDescription: "Information and technical inspection support for second hand refrigerators and used fridges in Mumbai. Technician verification and cooling health diagnostics.",
-    h1: "Second Hand Refrigerator Technical Inspection & Support",
-    canonical: "https://acseva.in/second-hand-fridge"
-  }
-};
-
 export const FAQ_DATA = [
   {
-    q: "Which areas and PIN codes in Mumbai do you serve?",
-    a: "We serve all major Mumbai Western Suburbs and Mira-Bhayandar areas including Kandivali (400067, 400101), Borivali (400066, 400091, 400092), Malad (400097, 400064), Goregaon (400063, 400104, 400062), Andheri (400058, 400069, 400053, 400093, 400059), Sakinaka & Marol (400072, 400059), Vile Parle (400056, 400057), Santacruz (400054, 400055), Khar (400051, 400052), Bandra (400050, 400051), Dahisar (400068), Mira Road (401107), and Bhayandar (401105, 401101) with fast 30-45 minute doorstep arrival."
+    q: "Why is my AC not cooling properly?",
+    a: "The most common reasons for an AC not cooling are: dirty or clogged air filters blocking airflow, low refrigerant gas due to a leak, a faulty capacitor causing the compressor to underperform, dirty condenser coils on the outdoor unit, or a PCB sensor failure. Star Cool Air Con technicians diagnose the exact issue and fix it on the same visit wherever possible."
   },
   {
-    q: "What does an AC service include?",
-    a: "A standard AC service includes high-pressure water jet cleaning of evaporator and condenser coils, air filter washing, drain pipe cleaning to prevent water leakage, electrical safety checkup, fan motor inspection, and refrigerant gas pressure check."
+    q: "How much does AC repair cost in Mumbai?",
+    a: "AC repair costs in Mumbai vary depending on the problem. A standard AC service (jet cleaning) typically costs ₹400–₹800. Gas refilling starts from ₹1,500 depending on the gas type (R22, R32, R410A). PCB repair ranges from ₹1,500–₹5,000 and compressor replacement depends on brand and ton. Star Cool Air Con provides transparent quotes before starting any work — no hidden charges."
   },
   {
-    q: "When should a Split AC be serviced?",
-    a: "A Split AC should be serviced at least twice a year—once before summer begins (pre-season servicing) and once after heavy summer/monsoon use. Regular servicing ensures optimal cooling, lower electricity bills, and longer compressor lifespan."
+    q: "How quickly can an AC technician visit in Mumbai?",
+    a: "Star Cool Air Con aims to dispatch a technician as quickly as possible after your call or WhatsApp booking. For many Mumbai areas, same-day service is available. Response time can vary depending on location, time of day, and technician availability — call or WhatsApp us to confirm current availability in your area."
   },
   {
-    q: "What causes an AC to stop cooling?",
-    a: "Common reasons include dirty or clogged air filters, low refrigerant gas due to micro-leaks, faulty compressor relay/capacitor, dirty outdoor condenser coil, or indoor PCB circuit sensor failure."
+    q: "Do you repair all types of AC — Split, Window, Cassette, Ductable?",
+    a: "Yes. Star Cool Air Con services all AC types including Split AC (inverter and non-inverter), Window AC, Cassette AC (4-way ceiling), Ductable AC, Portable AC, Tower AC, and Central/Commercial AC systems. We work on residential, office, and commercial ACs."
   },
   {
-    q: "When does an AC need gas charging?",
-    a: "An AC needs gas charging when it blows normal air instead of cold air, ice forms on the copper pipes or indoor coil, or when low pressure is detected during routine servicing. Gas refilling should always be done after finding and repairing micro-leaks."
+    q: "Which AC brands do you service in Mumbai?",
+    a: "We service all major AC brands including Voltas, Blue Star, LG, Samsung, Daikin, Hitachi, O-General, Mitsubishi, Carrier, Panasonic, Whirlpool, Lloyd, Godrej, Haier, Onida, Videocon, Toshiba, Fujitsu, TCL, and more. If your brand isn't listed, contact us — we likely service it."
   },
   {
-    q: "What is the difference between Split AC and Cassette AC?",
-    a: "Split ACs are wall-mounted units ideal for residential bedrooms and small offices. Cassette ACs are ceiling-recessed 4-way airflow units designed for larger commercial spaces, showrooms, and conference rooms."
+    q: "What does an AC service (cleaning) include?",
+    a: "A standard AC service includes high-pressure foam jet washing of the indoor evaporator coil, air filter cleaning or replacement, blower fan cleaning, drain pipe flushing to prevent water leakage, electrical safety check, fan motor inspection, and refrigerant pressure check. The outdoor condenser coil is also cleaned as needed."
   },
   {
-    q: "What is Ductable AC?",
-    a: "Ductable AC is a central cooling system where conditioned air is distributed throughout multiple rooms or halls using hidden air ducts and ceiling diffusers. It is commonly used in commercial offices, banquets, and villas."
+    q: "How often should an AC be serviced?",
+    a: "For best performance and longevity, an AC should be serviced at least twice a year — once before summer (March–April) and once after the monsoon season (October–November). ACs used in dusty environments or running continuously may need servicing every 3–4 months."
   },
   {
-    q: "What is Central AC?",
-    a: "Central AC refers to large-capacity central plant systems or VRV/VRF multi-zone setups engineered to cool entire multi-story buildings or large commercial facilities from a centralized chiller/condenser location."
+    q: "Why is my AC leaking water inside the room?",
+    a: "AC water leakage inside is usually caused by a blocked or dirty drain pipe that prevents condensed water from draining out properly. Other causes include a dirty evaporator coil causing ice formation, low refrigerant gas, or an incorrectly tilted indoor unit. This can be fixed quickly — call or WhatsApp Star Cool Air Con for a same-day check."
   },
   {
-    q: "How often should a washing machine be serviced?",
-    a: "A washing machine should undergo preventive servicing every 6 to 12 months. Periodic scaling cleaner treatment and drain pump filter cleaning prevent drum mold, odor, and motor strain."
+    q: "What are the signs that my AC needs gas refilling?",
+    a: "Signs of low AC gas (refrigerant) include: the AC blows air but doesn't cool, ice or frost forming on the copper pipes or indoor coil, the outdoor unit running continuously without the room cooling, and higher electricity bills. Gas refilling should always be done after finding and sealing the leak first."
   },
   {
-    q: "Why is my refrigerator not cooling?",
-    a: "Refrigerator cooling failure can be caused by compressor relay/start capacitor failure, refrigerant gas leakage, clogged condenser coils, defective defrost timer/heater causing ice build-up, or worn door gasket seals."
+    q: "Do you repair AC PCBs and electronic parts?",
+    a: "Yes. Star Cool Air Con repairs and replaces AC PCB boards (both inverter and non-inverter types), sensors, thermistors, capacitors, relays, fan motors, and other electronic components for all major brands. PCB repair is often more cost-effective than buying a new PCB."
+  },
+  {
+    q: "Do you provide AC installation in Mumbai?",
+    a: "Yes. We provide professional Split AC installation including wall mounting, copper pipe fitting, electrical connection, and gas vacuuming and testing. We also install Cassette, Ductable, and Window ACs. Contact us with your AC brand and ton capacity for a quote."
+  },
+  {
+    q: "Which areas in Mumbai do you serve?",
+    a: "Star Cool Air Con serves Kandivali, Borivali, Malad, Goregaon, Andheri, Vile Parle, Santacruz, Bandra, Khar, Dahisar, Jogeshwari, Mira Road, and Bhayandar. Contact us to confirm coverage in your specific area."
   }
 ];
 
 export const BRAND_SEO_DATA = {
-  voltas: { name: "Voltas", title: "Voltas AC Repair & Service | AC Seva", tag: "Voltas AC Repair, Service & Installation" },
-  lg: { name: "LG", title: "LG AC Repair & Service | AC Seva", tag: "LG Dual Inverter AC Repair & Service" },
-  lloyd: { name: "Lloyd", title: "Lloyd AC Repair & Service | AC Seva", tag: "Lloyd AC Repair, Service & Installation" },
-  daikin: { name: "Daikin", title: "Daikin AC Repair & Service | AC Seva", tag: "Daikin Inverter & Ductable AC Repair" },
-  samsung: { name: "Samsung", title: "Samsung AC Repair & Service | AC Seva", tag: "Samsung WindFree & Inverter AC Repair" },
-  mitsubishi: { name: "Mitsubishi Heavy Duty", title: "Mitsubishi Heavy Duty AC Repair & Service | AC Seva", tag: "Mitsubishi Commercial & Split AC Service" },
-  bluestar: { name: "Blue Star", title: "Blue Star AC Repair & Service | AC Seva", tag: "Blue Star Precision & Ductable AC Repair" },
-  carrier: { name: "Carrier", title: "Carrier AC Repair & Service | AC Seva", tag: "Carrier AC Repair, Service & Installation" },
-  ogeneral: { name: "O General", title: "O General AC Repair & Service | AC Seva", tag: "O General Tropical Heavy Duty AC Repair" },
-  haier: { name: "Haier", title: "Haier AC Repair & Service | AC Seva", tag: "Haier Triple Inverter AC Repair & Service" }
+  voltas: { name: "Voltas", tag: "Voltas AC Repair & Service Mumbai" },
+  lg: { name: "LG", tag: "LG Dual Inverter AC Repair Mumbai" },
+  samsung: { name: "Samsung", tag: "Samsung AC Repair & Service Mumbai" },
+  daikin: { name: "Daikin", tag: "Daikin Inverter AC Repair Mumbai" },
+  hitachi: { name: "Hitachi", tag: "Hitachi AC Repair & Service Mumbai" },
+  bluestar: { name: "Blue Star", tag: "Blue Star AC Repair Mumbai" },
+  carrier: { name: "Carrier", tag: "Carrier AC Repair & Service Mumbai" },
+  ogeneral: { name: "O General", tag: "O General AC Repair Mumbai" },
+  mitsubishi: { name: "Mitsubishi", tag: "Mitsubishi AC Repair Mumbai" },
+  panasonic: { name: "Panasonic", tag: "Panasonic AC Repair Mumbai" },
+  whirlpool: { name: "Whirlpool", tag: "Whirlpool AC Repair Mumbai" },
+  lloyd: { name: "Lloyd", tag: "Lloyd AC Repair & Service Mumbai" },
+  godrej: { name: "Godrej", tag: "Godrej AC Repair Mumbai" },
+  haier: { name: "Haier", tag: "Haier AC Repair Mumbai" }
 };

@@ -1,10 +1,10 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function QuickBookingModal({ isOpen, serviceName, appliance, onClose, onFillForm }) {
   if (!isOpen) return null;
 
-  const whatsappText = encodeURIComponent(`Hi AC Seva, I want to book *${serviceName || 'Appliance Repair'}* service for my ${appliance || 'home'}. Please share technician timing.`);
-  const whatsappUrl = `https://wa.me/918471084775?text=${whatsappText}`;
+  const whatsappText = encodeURIComponent(`Hi Star Cool Air Con, I want to book *${serviceName || 'Appliance Repair'}* service for my ${appliance || 'home'}. Please share technician timing.`);
+  const whatsappUrl = `https://wa.me/918108437170?text=${whatsappText}`;
 
   return (
     <div className="fixed inset-0 z-[130] bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
@@ -35,17 +35,17 @@ export default function QuickBookingModal({ isOpen, serviceName, appliance, onCl
             className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm flex items-center justify-center gap-3 shadow-xl transition-transform hover:scale-[1.02]"
           >
             <i className="fa-brands fa-whatsapp text-2xl"></i>
-            <span>Chat on WhatsApp (8471084775)</span>
+            <span>Chat on WhatsApp (8108437170)</span>
           </a>
 
           {/* Call Direct */}
           <a
-            href="tel:+918471084775"
+            href="tel:+918108437170"
             onClick={onClose}
             className="w-full py-3.5 px-4 rounded-xl btn-gold-gradient font-extrabold text-sm flex items-center justify-center gap-3 shadow-xl transition-transform hover:scale-[1.02]"
           >
             <i className="fa-solid fa-phone text-lg"></i>
-            <span>Call Now (8471084775)</span>
+            <span>Call Now (8108437170)</span>
           </a>
 
           {/* Fill Form */}
@@ -66,3 +66,4 @@ export default function QuickBookingModal({ isOpen, serviceName, appliance, onCl
     </div>
   );
 }
+
